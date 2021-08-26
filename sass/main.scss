@@ -1,0 +1,123 @@
+//** VARIABLES
+//
+//## Colors
+$gray: #222;
+$brown: #483024;
+$tan: #f7b67c;
+$off-white: #ffe3df;
+$standard-green: green;
+
+// Default Size
+$default-width: 100px;
+$default-height: 350px;
+
+
+//** PAGE STYLE
+//
+body {
+    background: $gray;
+}
+
+.logo {
+    min-width: 100%;
+    text-align: center;
+
+    .logo-tmnt {
+        width: 400px;
+        text-align: center;
+        margin: 2rem;
+    }
+}
+
+
+//** LINEUP
+//
+.lineup {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 75px 25px;
+
+    li {
+        margin: 25px;
+    }
+}
+
+
+//** DEFAULT TURTLE STYLES
+//
+.turtle {
+    position: relative;
+    background: $standard-green;
+    border-radius: 10px;
+    width: $default-width;
+    height: $default-height;
+    overflow: hidden;
+
+    // Knee pads and optional leg wraps
+    &::before {
+        position: absolute;
+        bottom: 2%;
+        background: transparent;
+        background: linear-gradient(to bottom,
+                $brown 0%,
+                $brown 35%,
+                transparent 35%);
+        width: 100%;
+        height: 20%;
+        content: '';
+    }
+
+    // Leg divider
+    &::after {
+        position: absolute;
+        bottom: 0;
+        left: calc(50% - 4px);
+        background: $gray;
+        width: 8px;
+        height: 30%;
+        content: '';
+    }
+
+    .mask {
+        display: block;
+        position: absolute;
+        top: 3%;
+        width: 100%;
+        height: 8%;
+    }
+
+    .shell {
+        position: absolute;
+        top: 30%;
+        display: block;
+        background: $tan;
+        border-radius: 10px;
+        width: 100%;
+        height: 40%;
+
+        // Belt
+        &::before {
+            position: absolute;
+            bottom: 15%;
+            background: $brown;
+            width: 100%;
+            height: 15%;
+            content: '';
+        }
+
+        // Optional sash
+        &::after {
+            position: absolute;
+            bottom: 15%;
+            left: -100%;
+            background: $brown;
+            width: 200%;
+            height: 15%;
+            transform: rotate(45deg);
+            transform-origin: right bottom;
+            content: none;
+        }
+    }
+}

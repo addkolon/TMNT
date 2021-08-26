@@ -1,0 +1,90 @@
+$diameter: 400px;
+
+$rounded-corners: true;
+
+@mixin prefix($property, $value, $prefixes) {
+    @each $prefix in $prefixes {
+        -#{$prefix}-#{$property}: $value;
+    }
+
+    #{$property}: $value;
+}
+
+
+.circle {
+    background-color: rebeccapurple;
+    width: $diameter;
+    height: $diameter;
+    border-radius: $diameter * 0.5;
+
+    &:hover {
+        // Här skall kod in
+        @include prefix(filter, grayscale(25%), moz webkit);
+        border-radius: $diameter * 0.2;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+@mixin media($width) {
+    @media only screen and (min-width: $width) {
+        @content;
+    }
+}
+
+@include media(720px) {
+    body {
+        background: #ccc;
+    }
+}
+
+@include media(1280px) {
+    body {
+        background: #ececec;
+    }
+}
+
+.content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-width: 100%;
+    height: 100vh;
+    justify-content: center;
+
+}
+
+@mixin button() {
+    display: block;
+    font-size: 20px;
+    text-decoration: none;
+    padding: 2rem 4rem;
+    border-radius: if($rounded-corners, 20px, null);
+    @content;
+}
+
+.alert {
+    @include button {
+        background: #F00;
+        color: white;
+        border: #F00 2px solid;
+    }
+}
+
+.cancel {
+    @include button {
+        border: solid 2px #999;
+        color: black;
+
+        &:hover {
+            background-color: transparent;
+        }
+    }
+}

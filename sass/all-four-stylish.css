@@ -1,0 +1,180 @@
+body {
+  background: #222;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.logo {
+  min-width: 100%;
+  text-align: center;
+}
+
+.logo .logo-tmnt {
+  width: 400px;
+  text-align: center;
+  margin: 2rem;
+}
+
+.lineup {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  padding: 75px 25px;
+}
+
+.lineup li {
+  margin: 25px;
+}
+
+.turtle {
+  position: relative;
+  background: green;
+  border-radius: 10px;
+  width: 100px;
+  height: 350px;
+  overflow: hidden;
+}
+
+.turtle::before {
+  position: absolute;
+  bottom: 2%;
+  background: transparent;
+  background: -webkit-gradient(linear, left top, left bottom, from(#483024), color-stop(35%, #483024), color-stop(35%, transparent));
+  background: linear-gradient(to bottom, #483024 0%, #483024 35%, transparent 35%);
+  width: 100%;
+  height: 20%;
+  content: '';
+}
+
+.turtle::after {
+  position: absolute;
+  bottom: 0;
+  left: calc(50% - 4px);
+  background: #222;
+  width: 8px;
+  height: 30%;
+  content: '';
+}
+
+.turtle .mask {
+  display: block;
+  position: absolute;
+  top: 3%;
+  width: 100%;
+  height: 8%;
+}
+
+.turtle .shell {
+  position: absolute;
+  top: 30%;
+  display: block;
+  background: #f7b67c;
+  border-radius: 10px;
+  width: 100%;
+  height: 40%;
+}
+
+.turtle .shell::before {
+  position: absolute;
+  bottom: 15%;
+  background: #483024;
+  width: 100%;
+  height: 15%;
+  content: '';
+}
+
+.turtle .shell::after {
+  position: absolute;
+  bottom: 15%;
+  left: -100%;
+  background: #483024;
+  width: 200%;
+  height: 15%;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  -webkit-transform-origin: right bottom;
+          transform-origin: right bottom;
+  content: none;
+}
+
+.turtle.leo {
+  background: #459651;
+  height: 350px;
+}
+
+.turtle.leo::before {
+  background: -webkit-gradient(linear, left top, left bottom, from(#483024), color-stop(35%, #483024), color-stop(35%, transparent), color-stop(70%, transparent), color-stop(70%, #ffe3df), to(#ffe3df));
+  background: linear-gradient(to bottom, #483024 0%, #483024 35%, transparent 35%, transparent 70%, #ffe3df 70%, #ffe3df 100%);
+}
+
+.turtle.leo .mask {
+  background: #243b98;
+}
+
+.turtle.leo .shell::after {
+  content: '';
+}
+
+.turtle.donnie {
+  background: #a3a564;
+  height: 378.68852px;
+}
+
+.turtle.donnie::before {
+  background: -webkit-gradient(linear, left top, left bottom, from(#483024), color-stop(35%, #483024), color-stop(35%, transparent), color-stop(70%, transparent), color-stop(70%, #ffe3df), to(#ffe3df));
+  background: linear-gradient(to bottom, #483024 0%, #483024 35%, transparent 35%, transparent 70%, #ffe3df 70%, #ffe3df 100%);
+}
+
+.turtle.donnie .mask {
+  background: #67449e;
+}
+
+.turtle.donnie .shell::after {
+  content: '';
+}
+
+.turtle.raph {
+  background: #839d44;
+  height: 344.2623px;
+}
+
+.turtle.raph::before {
+  background: -webkit-gradient(linear, left top, left bottom, from(#483024), color-stop(35%, #483024), color-stop(35%, transparent), color-stop(70%, transparent), color-stop(70%, #483024), to(#483024));
+  background: linear-gradient(to bottom, #483024 0%, #483024 35%, transparent 35%, transparent 70%, #483024 70%, #483024 100%);
+}
+
+.turtle.raph .mask {
+  background: #ab242a;
+}
+
+.turtle.raph .shell::after {
+  content: none;
+}
+
+.turtle.mikey {
+  background: #b4be39;
+  height: 332.78689px;
+}
+
+.turtle.mikey::before {
+  background: -webkit-gradient(linear, left top, left bottom, from(#483024), color-stop(35%, #483024), color-stop(35%, transparent), color-stop(70%, transparent), color-stop(70%, #483024), to(#483024));
+  background: linear-gradient(to bottom, #483024 0%, #483024 35%, transparent 35%, transparent 70%, #483024 70%, #483024 100%);
+}
+
+.turtle.mikey .mask {
+  background: #eb6822;
+}
+
+.turtle.mikey .shell::after {
+  content: none;
+}
+/*# sourceMappingURL=all-four-stylish.css.map */

@@ -1,0 +1,211 @@
+//** VARIABLES
+//
+//## Colors
+$gray: #222;
+$brown: #483024;
+$tan: #f7b67c;
+$off-white: #ffe3df;
+
+// Default Size
+$default-width: 100px;
+$default-height: 350px;
+
+
+//** PAGE STYLE
+//
+body {
+    background: $gray;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.logo {
+    min-width: 100%;
+    text-align: center;
+
+    .logo-tmnt {
+        width: 400px;
+        text-align: center;
+        margin: 2rem;
+    }
+}
+
+
+//** LINEUP
+//
+.lineup {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 75px 25px;
+
+    li {
+        margin: 25px;
+    }
+}
+
+
+//** DEFAULT TURTLE STYLES
+//
+.turtle {
+    position: relative;
+    background: green;
+    border-radius: 10px;
+    width: $default-width;
+    height: $default-height;
+    overflow: hidden;
+
+    // Knee pads and optional leg wraps
+    &::before {
+        position: absolute;
+        bottom: 2%;
+        background: transparent;
+        background: linear-gradient(to bottom,
+                $brown 0%,
+                $brown 35%,
+                transparent 35%);
+        width: 100%;
+        height: 20%;
+        content: '';
+    }
+
+    // Leg divider
+    &::after {
+        position: absolute;
+        bottom: 0;
+        left: calc(50% - 4px);
+        background: $gray;
+        width: 8px;
+        height: 30%;
+        content: '';
+    }
+
+    .mask {
+        display: block;
+        position: absolute;
+        top: 3%;
+        width: 100%;
+        height: 8%;
+    }
+
+    .shell {
+        position: absolute;
+        top: 30%;
+        display: block;
+        background: $tan;
+        border-radius: 10px;
+        width: 100%;
+        height: 40%;
+
+        // Belt
+        &::before {
+            position: absolute;
+            bottom: 15%;
+            background: $brown;
+            width: 100%;
+            height: 15%;
+            content: '';
+        }
+
+        // Optional sash
+        &::after {
+            position: absolute;
+            bottom: 15%;
+            left: -100%;
+            background: $brown;
+            width: 200%;
+            height: 15%;
+            transform: rotate(45deg);
+            transform-origin: right bottom;
+            content: none;
+        }
+    }
+}
+
+
+
+// 2012 SERIES COLORS
+$leo-green: #459651;
+$leo-blue: #243b98;
+$raph-green: #839d44;
+$raph-red: #ab242a;
+$donnie-green: #a3a564;
+$donnie-purple: #67449e;
+$mikey-green: #b4be39;
+$mikey-orange: #eb6822;
+
+
+// MIXIN TO THEME THE TURTLES
+@mixin theme-turtle($skin: green,
+    $height: $default-height,
+    $mask: transparent,
+    $sash: false,
+    $leg-wraps: transparent) {
+
+    background: $skin;
+    height: $height;
+
+    &::before {
+        background: linear-gradient(to bottom,
+                $brown 0%,
+                $brown 35%,
+                transparent 35%,
+                transparent 70%,
+                $leg-wraps 70%,
+                $leg-wraps 100%);
+    }
+
+    .mask {
+        background: $mask;
+    }
+
+    .shell::after {
+        @if $sash==true {
+            content: '';
+        }
+
+        @else {
+            content: none;
+        }
+    }
+}
+
+// MIXIN FOR CALCULATING TURTLE HEIGHT
+@function calculate-height($inches) {
+    // Basing everyone's height off 
+    // Leo's 5'1" (61") being 350px
+    @return $default-height * $inches / 61;
+}
+
+;
+
+
+// TURTLE THEMES
+.turtle.leo {
+    @include theme-turtle($skin: $leo-green,
+        $mask: $leo-blue,
+        $sash: true,
+        $leg-wraps: $off-white);
+}
+
+.turtle.donnie {
+    @include theme-turtle($skin: $donnie-green,
+        $mask: $donnie-purple,
+        $height: calculate-height(66),
+        $sash: true,
+        $leg-wraps: $off-white);
+}
+
+.turtle.raph {
+    @include theme-turtle($skin: $raph-green,
+        $mask: $raph-red,
+        $height: calculate-height(60),
+        $leg-wraps: $brown);
+}
+
+.turtle.mikey {
+    @include theme-turtle($skin: $mikey-green,
+        $mask: $mikey-orange,
+        $height: calculate-height(58),
+        $leg-wraps: $brown);
+}
